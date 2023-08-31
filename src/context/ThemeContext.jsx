@@ -37,6 +37,11 @@ const ThemeProvider = ({initialTheme,children})=>{
     if(initialTheme){
         rawSetTheme(initialTheme)
     }
+
+    useEffect(()=>{
+
+        rawSetTheme(getInitialTheme())
+    },[])
     useEffect(()=>{
 
         rawSetTheme(theme)
