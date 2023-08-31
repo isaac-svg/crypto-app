@@ -12,6 +12,7 @@ const SavedCoin = () => {
   useEffect(() => {
     onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
       setCoins(doc.data()?.watchList);
+      console.log(coins)
     });
   }, [user?.email]);
 

@@ -2,14 +2,16 @@ import { createContext, useEffect, useState } from "react"
 
 
 
-const getInitialTheme = ()=>{
-    if(typeof window !== "undefined" && window.localStorage){
+ export const getInitialTheme = () =>{
+    if(typeof window !== undefined && window.localStorage){
         const storedPrefs   = window.localStorage.getItem("color-theme")
-        if(typeof storedPrefs === "string"){
+        console.log(storedPrefs,"check ist type:  ",  Boolean(typeof storedPrefs === "string"))
+        if(["dark", "light"].includes(storedPrefs)){
             return storedPrefs
         }
 
         const userMedia = window.matchMedia("(prefers-color-scheme:dark)")
+
         if(userMedia.matches){
             return "dark"
         }
@@ -24,13 +26,12 @@ const ThemeProvider = ({initialTheme,children})=>{
 
     const [theme,setTheme] =  useState(initialTheme)
 
-  const  rawSetTheme =(theme)=>{
+  const  rawSetTheme = (theme)=>{
     const root =  window.document.documentElement
-    const isDark = theme ==="dark"
+    const isDark = theme === "dark"
 
     root.classList.remove(isDark?"light":"dark")
     root.classList.add(theme)
-
     localStorage.setItem("color-theme",theme)
   }
     
@@ -39,11 +40,10 @@ const ThemeProvider = ({initialTheme,children})=>{
     }
 
     useEffect(()=>{
-
+        getInitialTheme()
         rawSetTheme(getInitialTheme())
     },[])
     useEffect(()=>{
-
         rawSetTheme(theme)
     },[theme])
 
