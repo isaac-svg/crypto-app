@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import ThemeProvider, { getInitialTheme } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import { Route, Routes } from 'react-router-dom'
@@ -25,7 +25,7 @@ const App = () => {
     axios.get(url).then((response)=>{
       setCoins(response.data)
       
-    }).then((res)=>{
+    }).then(()=>{
       
     }).catch((err)=>{
     console.error(err)})

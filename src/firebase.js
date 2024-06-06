@@ -11,7 +11,7 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER,
   appId:  import.meta.env.VITE_APP_FIREBASE_ID
 };
-
+console.log(firebaseConfig)
 const app = initializeApp(firebaseConfig);
 export const auth =  getAuth(app)
 export const db =  getFirestore(app)

@@ -4,7 +4,7 @@ import {signInWithEmailAndPassword,signOut,createUserWithEmailAndPassword, onAut
 import { doc, setDoc } from "firebase/firestore"
 
 
-export const UserContext =  createContext()
+export const UserContext =  createContext(null)
 
 
 const  AuthContextProvider = ({children})=>{
